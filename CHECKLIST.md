@@ -1,8 +1,13 @@
-# v21 check — all PASS
-- [x] Bottom in-website player REMOVED (your screenshot)
-- [x] No <audio>, no play/seek/volume/repeat/sleep/speed controls
-- [x] "could not be loaded" text 0
-- [x] Every Tu Online Hai tap opens YouTube watch?v=6ghXpBX9ieg (6 places)
-- [x] JS syntax OK, no null player references crash the page
-- [x] Colour animation + bounce + lazy loading kept (v20 animation)
-- [x] No login gate, bell only for signed-in users, shop 4 stores only
+# v22 check — all PASS
+- [x] No login gate
+- [x] No bottom player bar
+- [x] Ask AI full screen, no language menu, auto-detects language
+- [x] All buttons animated (moving + bouncing + colour-changing)
+- [x] Lofi PLAYBOOK title colour-changing continuously
+- [x] 20 projects explained
+- [x] Front shop: 4 store buttons + Music Affiliate Program button only
+- [x] All 101 affiliate cards on second page, with search
+- [x] 0 mp3, 0 Flipkart store links, 0 language picker
+- [x] Desktop + phone layouts, no sideways scrolling
+- [x] Back-to-top hidden until scrolled >400px
+- [x] JS syntax OK, index / login / updates / sw.js all 200 locally

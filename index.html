@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="dark"/>
+<link rel="icon" href="data:,"/>
+<title>Lofi PLAYBOOK — Slowed, Reverb &amp; Midnight Vibes</title>
+<meta name="description" content="Lofi PLAYBOOK — Hindi lofi, slowed + reverb and rainy-night songs. Featuring Tu Online Hai, Par Mera Nahi. Premieres 21 Nov 2026, 7 PM IST."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="moon" aria-hidden="true"></div>
+<div id="floatLayer" aria-hidden="true"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="glow glow-a"></div><div class="glow glow-b"></div><div class="glow glow-c"></div>
+<div id="progressBar" aria-hidden="true"></div>
+<div id="cursorGlow" aria-hidden="true"></div>
+<div class="fog fog1" aria-hidden="true"></div><div class="fog fog2" aria-hidden="true"></div>
+<div id="lightning" aria-hidden="true"></div>
+<div id="burstLayer" aria-hidden="true"></div>
+<div class="nebula" aria-hidden="true"></div>
+<div class="god-rays" aria-hidden="true"></div>
+<canvas id="particles" aria-hidden="true"></canvas>
+<div id="bokehLayer" aria-hidden="true"></div>
+<div class="vignette-pulse" aria-hidden="true"></div>
+
+<nav>
+  <a class="logo" href="#top"><span class="vinyl-mini" aria-hidden="true"></span>LOFI&nbsp;PLAYBOOK</a>
+  <div class="navlinks">
+    <a href="#premiere">Premiere</a>
+    <a href="#songs">Songs</a>
+    <a href="#story">2:09 AM</a>
+    <a href="#contact">Contact</a>
+    <a href="#about" class="js-about">About</a>
+    <a href="https://www.instagram.com/lofiplaybook" target="_blank" rel="noopener" aria-label="Lofi PLAYBOOK on Instagram">Instagram</a>
+    <button class="sub-btn js-subscribe" type="button" style="border:0;cursor:pointer;font:inherit;padding:10px 16px;border-radius:999px">▶ Subscribe</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <img class="hero-bg" src="assets/images/hero-bg.webp" alt="Lofi anime couple under an umbrella on a rainy rooftop under the full moon, city lights below"/>
+  <div class="hero-shade"></div>
+  <canvas id="heroRain" aria-hidden="true"></canvas>
+  <span class="rain-chip"><i>🌧</i> Under the umbrella — live rain</span>
+  <div class="hero-in">
+    <div class="orbit o1" aria-hidden="true"></div><div class="orbit o2" aria-hidden="true"></div>
+    <span class="live-pill"><span class="dot"></span> Online now — but the new song drops tomorrow</span>
+    <h1>Lofi<br/><em class="neon-sign">PLAYBOOK</em></h1>
+    <span class="hand">slowed + reverb, rain &amp; midnight feelings ♡</span>
+    <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="lede">Hindi lofi for the hours nobody sees — 2 AM heartbreak, rainy rooftops, last-seen-just-now pain, and songs that stay when people don't.</p>
+    <div class="hero-cta">
+      <button class="btn btn-play" id="heroPlay" type="button">▶ &nbsp;Play “Tu Online Hai”</button>
+      <a class="btn btn-ghost btn-countdown" href="#premiere">Premiere countdown ↓</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="statSubs">131</b><span>Subscribers · live</span></div>
+      <div class="stat"><b id="statVideos">6</b><span>Videos · auto-synced</span></div>
+      <div class="stat"><b id="statViews">2,801</b><span>Total channel views · live</span></div>
+      <div class="stat"><b>#1</b><span>On Google for its name</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- SOCIAL FRONT : YOUTUBE + INSTAGRAM -->
+<div class="hub">
+  <div class="hub-card">
+    <div class="hub-head">
+      <img class="hub-avatar" src="assets/images/channel-avatar.webp" alt="Lofi PLAYBOOK channel artwork"/>
+      <div>
+        <h2>Lofi PLAYBOOK <span class="live-tag">LIVE COUNT</span></h2>
+        <p>@LofiPLAYBOOK · <b id="hubSubs" style="color:var(--ink)">131</b> subscribers · <b id="hubViews" style="color:var(--ink)">2,801</b> total views — updates automatically from YouTube</p>
+      </div>
+    </div>
+    <div class="hub-btns">
+      <div class="link-unit">
+        <button class="big-btn btn-yt2 js-subscribe" type="button">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.6 3.6 12 3.6 12 3.6s-4.6 0-7.7.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S.8 9.1.8 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.6 1 1.9.2 7.5.3 7.5.3s4.6 0 7.7-.4c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8 15.1V8.4l6.2 3.4-6.2 3.3z"/></svg></span>
+          <span><b>Subscribe on YouTube</b><span>Tap — the subscribe box opens right here on this page</span></span>
+        </button>
+        <p class="link-cap"><b>For:</b> watching all the songs and getting every new upload first.</p>
+      </div>
+      <div class="link-unit">
+        <a class="big-btn btn-ig2" href="https://www.instagram.com/lofiplaybook" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></span>
+          <span><b>Follow on Instagram</b><span>@lofiplaybook — reels, clips &amp; daily lofi posts</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> following for reels, short clips and new-song updates.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marqueeTrack">
+  <span>Slowed <b>✦</b> Reverb <i>♡</i> Rainy Nights <b>✦</b> 2:09 AM <i>♡</i> Tu Online Hai <b>✦</b> Midnight Vibes <i>♡</i> One-Sided Love <b>✦</b> Lofi PLAYBOOK <i>♡</i></span>
+  <span>Slowed <b>✦</b> Reverb <i>♡</i> Rainy Nights <b>✦</b> 2:09 AM <i>♡</i> Tu Online Hai <b>✦</b> Midnight Vibes <i>♡</i> One-Sided Love <b>✦</b> Lofi PLAYBOOK <i>♡</i></span>
+</div></div>
+<div class="marquee" aria-hidden="true" style="border-top:0;opacity:.85"><div class="marquee-track" style="animation-direction:reverse;animation-duration:32s">
+  <span>✦ INFINITE VIBES <i>♡</i> PLAY IN FULL HERE <b>✦</b> 2:59 <i>♡</i> PREMIERE 21 NOV 7 PM <b>✦</b> GREEN DOT • NO REPLY <i>♡</i> RAIN + VINYL <b>✦</b></span>
+  <span>✦ INFINITE VIBES <i>♡</i> PLAY IN FULL HERE <b>✦</b> 2:59 <i>♡</i> PREMIERE 21 NOV 7 PM <b>✦</b> GREEN DOT • NO REPLY <i>♡</i> RAIN + VINYL <b>✦</b></span>
+</div></div>
+
+<div class="wrap">
+
+  <!-- PREMIERE -->
+  <section id="premiere">
+    <p class="kicker">something special is coming…</p>
+    <h2>The premiere</h2>
+    <p class="sub">The song everyone at 2:09 AM will feel. Set your reminder — when the green dot story goes live, be the first one waiting.</p>
+    <div class="count-card reveal">
+      <div>
+        <span class="badge-new">New song</span>
+        <h3>Tu Online Hai, <em>Par Mera Nahi</em> 💔</h3>
+        <p class="sub" style="margin:0">Heart Touching Hindi Song · 2:59 · Premieres <b style="color:var(--ink)">Saturday, 21 November 2026 at 7:00 PM IST</b> on Lofi PLAYBOOK.</p>
+        <div class="clock" role="timer" aria-label="Countdown to premiere">
+          <div class="unit"><b id="cd-d">–</b><span>Days</span></div>
+          <div class="unit"><b id="cd-h">–</b><span>Hours</span></div>
+          <div class="unit"><b id="cd-m">–</b><span>Mins</span></div>
+          <div class="unit"><b id="cd-s">–</b><span>Secs</span></div>
+        </div>
+        <p id="cd-note" style="color:var(--amber);font-weight:700;margin:16px 0 0"></p>
+        <div class="hero-cta" style="margin-top:18px">
+          <button class="btn btn-play btn-small js-subscribe" type="button">🔔 Subscribe — right here, no leaving</button>
+          <button class="btn btn-ghost btn-small" id="previewBtn" type="button">▶ Preview the song here</button>
+        </div>
+      </div>
+      <div class="count-art">
+        <img src="assets/images/channel-avatar.webp" alt="Sad boy in the rain holding a glowing phone, a girl's face fading into the moonlit clouds — Tu Online Hai artwork"/>
+        <span class="online-chip"><span class="dot"></span> Online · last seen just now</span>
+        <div class="stamp">2:09 AM<small>the hour this song lives in</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SONGS -->
+  <section id="songs">
+    <p class="kicker">press play, feel everything</p>
+    <h2>The library</h2>
+    <p class="sub">Every Lofi PLAYBOOK release so far. “Tu Online Hai” plays right here in full — the rest open on YouTube.</p>
+    <div class="filters" role="group" aria-label="Filter songs by mood">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All songs</button>
+      <button class="chip" type="button" data-filter="sad" aria-pressed="false">💔 Heartbreak</button>
+      <button class="chip" type="button" data-filter="rain" aria-pressed="false">🌧 Rainy night</button>
+      <button class="chip" type="button" data-filter="midnight" aria-pressed="false">🌙 Midnight</button>
+      <button class="chip" type="button" data-filter="love" aria-pressed="false">♡ Love</button>
+    </div>
+
+    <div class="grid" id="trackGrid">
+      <article class="track wide reveal" data-moods="sad midnight" id="track-tu">
+        <div class="art">
+          <img src="assets/images/channel-avatar.webp" alt="Tu Online Hai — boy in the rain with a glowing phone under the moon"/>
+          <button class="play-fab js-play-tu" type="button" aria-label="Play Tu Online Hai">▶</button>
+          <span class="dur">2:59</span>
+        </div>
+        <div class="body">
+          <span class="badge-new" style="align-self:flex-start">Premieres 21 Nov · 7 PM</span>
+          <h3>Tu Online Hai, Par Mera Nahi 💔</h3>
+          <div class="meta"><span>Heart Touching Hindi Song</span><span>·</span><span>Plays in full here</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+          <p style="color:var(--muted);margin:0;line-height:1.55">Green light on. No message. No reply. Just waiting. The one-sided love song for everyone who checks an online status they know will never turn into a text.</p>
+          <div class="tags"><span class="tag sad">One-sided love</span><span class="tag">2:09 AM</span><span class="tag rain">Late-night lofi</span></div>
+        </div>
+      </article>
+
+      <article class="track reveal" data-moods="rain love midnight">
+        <div class="art">
+          <img src="assets/images/track-raaton-mein-tu.webp" loading="lazy" decoding="async" alt="Raaton Mein Tu — girl with headphones by a rainy neon window"/>
+          <a class="play-fab" href="https://youtu.be/yIwM1rfoP2o?si=ZZ5ydFzqfbyS2Mqv" target="_blank" rel="noopener" aria-label="Watch Raaton Mein Tu on YouTube">▶</a>
+          <span class="dur">3:01</span>
+        </div>
+        <div class="body">
+          <h3><a href="https://youtu.be/yIwM1rfoP2o?si=ZZ5ydFzqfbyS2Mqv" target="_blank" rel="noopener">Raaton Mein Tu (Lo-fi Version)</a></h3>
+          <div class="meta"><span>Slowed &amp; Reverb · Rain + Vinyl</span><span>333 views</span></div>
+          <div class="tags"><span class="tag rain">Rain + vinyl</span><span class="tag">Slowed &amp; reverb</span></div>
+        </div>
+      </article>
+
+      <article class="track reveal" data-moods="rain love">
+        <div class="art">
+          <img src="assets/images/hero-bg.webp" alt="Agar Tum Saath Ho loading="lazy" decoding="async" — couple under an umbrella on a rainy rooftop"/>
+          <a class="play-fab" href="https://youtu.be/06TpiUrgD3w?si=c1OL7LsgUr4JZ5W8" target="_blank" rel="noopener" aria-label="Watch Agar Tum Saath Ho on YouTube">▶</a>
+          <span class="dur">3:15</span>
+        </div>
+        <div class="body">
+          <h3><a href="https://youtu.be/06TpiUrgD3w?si=c1OL7LsgUr4JZ5W8" target="_blank" rel="noopener">Agar Tum Saath Ho — LoFi Version</a></h3>
+          <div class="meta"><span>Slowed + Reverb · Rainy Night Vibes</span><span>293 views</span></div>
+          <div class="tags"><span class="tag rain">Rainy night</span><span class="tag">Together</span></div>
+        </div>
+      </article>
+
+      <article class="track reveal" data-moods="sad midnight">
+        <div class="art">
+          <img src="assets/images/track-o-romeo.webp" loading="lazy" decoding="async" alt="O Romeo — night drive through a neon city in the rain"/>
+          <a class="play-fab" href="https://youtu.be/duvMui9Z7G8?si=MP-uCGCh2wunhBBz" target="_blank" rel="noopener" aria-label="Watch O Romeo on YouTube">▶</a>
+          <span class="dur">2:52</span>
+        </div>
+        <div class="body">
+          <h3><a href="https://youtu.be/duvMui9Z7G8?si=MP-uCGCh2wunhBBz" target="_blank" rel="noopener">O Romeo (Dil Tera Yaad Kar Gaya)</a></h3>
+          <div class="meta"><span>Slowed + Reverb · Lofi Mix</span><span>325 views</span></div>
+          <div class="tags"><span class="tag sad">Missing someone</span><span class="tag">Night drive</span></div>
+        </div>
+      </article>
+
+      <article class="track reveal" data-moods="sad midnight rain">
+        <div class="art">
+          <img src="assets/images/track-dil-ke-kone-mein.webp" loading="lazy" decoding="async" alt="Dil Ke Kone Mein — boy by a warm window at midnight, rain outside"/>
+          <a class="play-fab" href="https://youtu.be/NEqa-RUb5V8?si=YBQ8sWa-50MxjeVA" target="_blank" rel="noopener" aria-label="Watch Dil Ke Kone Mein on YouTube">▶</a>
+          <span class="dur">3:26</span>
+        </div>
+        <div class="body">
+          <h3><a href="https://youtu.be/NEqa-RUb5V8?si=YBQ8sWa-50MxjeVA" target="_blank" rel="noopener">Dil Ke Kone Mein 🌧</a></h3>
+          <div class="meta"><span>Slowed &amp; Reverb · Sad Hindi Lofi · Midnight Vibes</span><span>562 views · most loved</span></div>
+          <div class="tags"><span class="tag sad">Sad Hindi lofi</span><span class="tag">Midnight vibes</span></div>
+        </div>
+      </article>
+    </div>
+    <p id="noTracks" style="display:none;color:var(--muted);margin-top:18px">No song in this mood yet — try another one.</p>
+  </section>
+
+  <!-- STORY -->
+  <section id="story">
+    <p class="kicker">the story behind the song</p>
+    <h2>2:09 AM</h2>
+    <div class="story reveal">
+      <div>
+        <p class="lyric">“Tu online hai, par meri nahi…”<br/><em>Kuch baatein kabhi kehin hi nahi</em> — some things were never said, and now the only reply is a green dot.</p>
+        <p class="sub">2:09 AM. The rain is on the window, the phone is in your hand, and she is online — for the whole world, just not for you. That one small green light carries the whole song: waiting, hoping, and slowly understanding.</p>
+        <p class="sub" style="margin-top:14px">If this is your story, the premiere chat has one rule — comment <b style="color:var(--ink)">“2:09 AM”</b> and find your people.</p>
+        <div class="hero-cta" style="margin-top:20px">
+          <button class="btn btn-play btn-small js-play-tu" type="button">▶ Listen now</button>
+          <button class="btn btn-ghost btn-small btn-teal" type="button">Copy “2:09 AM” 💬</button>
+        </div>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="bar"><span>2:09</span><span>▰▰▰ 5G</span></div>
+        <p class="clock-big">2:09</p>
+        <p class="date">Saturday, 21 November</p>
+        <div class="notif">
+          <span class="app">✆</span>
+          <div><b>Online <span class="dot" style="display:inline-block;vertical-align:middle"></span></b><span>last seen just now · no message</span></div>
+        </div>
+        <div class="notif" style="margin-top:12px">
+          <span class="app" style="background:#ff0033">▶</span>
+          <div><b>Lofi PLAYBOOK</b><span>Tu Online Hai, Par Mera Nahi — premieres 7:00 PM</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOODS -->
+  <section id="moods">
+    <p class="kicker">pick your feeling</p>
+    <h2>Four midnight moods</h2>
+    <div class="moods">
+      <a class="mood m1" href="#songs" data-mood-link="rain"><b>🌧 Rainy Night</b><span>Raaton Mein Tu · Agar Tum Saath Ho</span></a>
+      <a class="mood m2" href="#songs" data-mood-link="midnight"><b>🌙 Midnight</b><span>Dil Ke Kone Mein · Tu Online Hai</span></a>
+      <a class="mood m3" href="#songs" data-mood-link="sad"><b>💔 Heartbreak</b><span>O Romeo · Tu Online Hai</span></a>
+      <a class="mood m4" href="#songs" data-mood-link="love"><b>♡ Soft Love</b><span>Agar Tum Saath Ho · Raaton Mein Tu</span></a>
+    </div>
+  </section>
+
+  <!-- SHARE -->
+  <section id="share">
+    <p class="kicker">send it to someone at 2 AM</p>
+    <h2>Share the feeling</h2>
+    <div class="share-card reveal">
+      <p class="hash">#TuOnlineHai #HindiSadSong #HeartTouchingSong #BrokenHeart #SadLoveSong #EmotionalSong #OneSidedLove #BreakupSong #HindiSongs #LoveFailure #SadStatus #NewHindiSong #Alone #MissYou #Heartbreak #SadSong #LateNightVibes #OnlineButNotMine #HeartbreakSong #ViralSong #NewSong2026 #209AM #LoveSong #Reels #Trending #SadReels</p>
+      <div class="copy-row">
+        <div class="link-unit">
+          <button class="btn btn-copy btn-small btn-gold" id="copyHash" type="button">⧉ Copy hashtags</button>
+          <p class="link-cap"><b>For:</b> pasting into your post when you share the song.</p>
+        </div>
+        <div class="link-unit">
+          <button class="btn btn-yt btn-small js-subscribe" type="button">▶ Subscribe on YouTube</button>
+          <p class="link-cap"><b>For:</b> subscribing without leaving this page.</p>
+        </div>
+        <div class="link-unit">
+          <a class="btn btn-small btn-ig2" href="https://www.instagram.com/lofiplaybook" target="_blank" rel="noopener">◎ Follow on Instagram</a>
+          <p class="link-cap"><b>For:</b> reels, clips and daily updates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTO-SYNCED UPLOADS -->
+  <section id="fresh" style="display:none">
+    <p class="kicker">straight from the channel</p>
+    <h2>Fresh on YouTube</h2>
+    <p class="sub">This list syncs itself with the Lofi PLAYBOOK YouTube channel — every new upload appears here automatically, no website update needed.</p>
+    <div class="grid" id="syncGrid" style="margin-top:24px"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="kicker">talk to the channel</p>
+    <h2>Contact</h2>
+    <p class="sub">Song requests, collaborations and business enquiries — write to Lofi PLAYBOOK at <b style="color:var(--ink)">lofiplaybook007@gmail.com</b>.</p>
+    <div class="hub-btns" style="margin-top:22px">
+      <div class="link-unit">
+        <a class="big-btn btn-mail2" href="mailto:lofiplaybook007@gmail.com">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+          <span><b>Email — lofiplaybook007@gmail.com</b><span>Opens your mail app, ready to write</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> contact — song requests, collabs and business enquiries.</p>
+      </div>
+      <div class="link-unit">
+        <button class="big-btn btn-creator js-about" type="button">
+          <span class="ic creator-ic"><img src="assets/images/creator-icon.webp" alt="Aryan Kumar Shah"/></span>
+          <span><b>About the creator</b><span>Meet Aryan Kumar Shah — the person behind the channel</span></span>
+        </button>
+        <p class="link-cap"><b>For:</b> knowing who makes Lofi PLAYBOOK, with his portfolio, GitHub projects &amp; socials.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p class="hand">made for the ones still awake…</p>
+  <p><b style="color:var(--ink)">Lofi PLAYBOOK</b> · @LofiPLAYBOOK · Slowed · Reverb · Rain · Midnight</p>
+  <div class="foot-btns">
+    <div class="link-unit">
+      <button class="big-btn btn-yt2 js-subscribe" type="button"><span><b>▶ YouTube</b><span>Subscribe here</span></span></button>
+      <p class="link-cap"><b>For:</b> watching songs &amp; subscribing.</p>
+    </div>
+    <div class="link-unit">
+      <a class="big-btn btn-ig2" href="https://www.instagram.com/lofiplaybook" target="_blank" rel="noopener"><span><b>◎ Instagram</b><span>@lofiplaybook</span></span></a>
+      <p class="link-cap"><b>For:</b> following for reels.</p>
+    </div>
+    <div class="link-unit">
+      <a class="big-btn btn-mail2" href="mailto:lofiplaybook007@gmail.com"><span><b>✉ Email</b><span>lofiplaybook007@gmail.com</span></span></a>
+      <p class="link-cap"><b>For:</b> contact &amp; enquiries.</p>
+    </div>
+  </div>
+  <p style="font-size:.85rem">Tu Online Hai premieres Saturday, 21 Nov 2026 · 7:00 PM IST</p>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<!-- SUBSCRIBE SHEET : official YouTube subscribe button, in-page -->
+<div class="sheet-wrap" id="subSheet" role="dialog" aria-modal="true" aria-label="Subscribe to Lofi PLAYBOOK on YouTube">
+  <div class="sheet">
+    <button class="sheet-close" id="subClose" type="button" aria-label="Close subscribe box">✕</button>
+    <img class="hub-avatar" src="assets/images/channel-avatar.webp" alt="Lofi PLAYBOOK channel artwork"/>
+    <h3>Lofi PLAYBOOK</h3>
+    <p><b id="sheetSubs" style="color:var(--ink)">131</b> subscribers · <b id="sheetViews" style="color:var(--ink)">2,801</b> views — live from YouTube</p>
+    <p>Tap YouTube's own subscribe button below. It subscribes your account right here — YouTube may ask you to confirm in its small pop-up, and you stay on this page.</p>
+    <div class="yt-widget" id="ytWidget">
+      <div class="g-ytsubscribe" data-channelid="UCf4sWY2L9RjKkJ_u-i_bAMQ" data-layout="full" data-count="default" data-theme="dark"></div>
+    </div>
+    <p id="ytFallback" style="display:none"><a class="btn btn-yt btn-small" href="https://www.youtube.com/@LofiPLAYBOOK?sub_confirmation=1" target="_blank" rel="noopener">▶ Subscribe on YouTube</a></p>
+    <p class="sheet-note">The count above refreshes automatically — subscribe and watch it move. 🌧</p>
+  </div>
+</div>
+
+<!-- ABOUT PAGE : ARYAN KUMAR SHAH -->
+<div class="about-page" id="aboutPage" role="dialog" aria-modal="true" aria-label="About Aryan Kumar Shah">
+  <div class="infinity-cosmos" aria-hidden="true">
+    <div class="inf-nebula"></div>
+    <div class="inf-stars"></div>
+  </div>
+  <button class="about-close" id="aboutClose" type="button" aria-label="Close About page">✕</button>
+  <div class="about-in">
+    <p class="kicker" style="text-align:center">introduction</p>
+
+    <!-- ULTIMATE INFINITY LEVEL CREATOR AVATAR -->
+    <div class="infinity-avatar-wrap">
+      <span class="inf-halo h1" aria-hidden="true"></span>
+      <span class="inf-halo h2" aria-hidden="true"></span>
+      <span class="inf-ring r1" aria-hidden="true"></span>
+      <span class="inf-ring r2" aria-hidden="true"></span>
+      <span class="inf-ring r3" aria-hidden="true"></span>
+      <span class="inf-spark s1" aria-hidden="true">✦</span>
+      <span class="inf-spark s2" aria-hidden="true">♪</span>
+      <span class="inf-spark s3" aria-hidden="true">✧</span>
+      <span class="inf-spark s4" aria-hidden="true">⚡</span>
+      <img class="about-photo" src="assets/images/creator-avatar.webp" alt="Aryan Kumar Shah — real photo"/>
+      <span class="inf-badge">∞ CREATOR &amp; DEV</span>
+    </div>
+
+    <h2 style="margin-top:24px">Aryan Kumar Shah</h2>
+    <p class="about-role">Aspiring Software Developer · AI &amp; Web Builder</p>
+    <p class="about-bio">BCA student at PITM / MAKAUT (Maulana Abul Kalam Azad University of Technology, West Bengal). He builds AI tools, full-stack web &amp; mobile apps, shares his code openly, and runs the Lofi PLAYBOOK channel — slowed, reverb and rainy-midnight songs for the hours nobody sees.</p>
+    <div class="about-btns">
+      <div class="link-unit">
+        <a class="big-btn btn-portfolio" href="https://aryancodes-dev.github.io/" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></span>
+          <span><b>Portfolio</b><span>aryancodes-dev.github.io</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> seeing all his work in one place.</p>
+      </div>
+      <div class="link-unit">
+        <button class="big-btn btn-github js-open-projects" type="button">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span>
+          <span><b>GitHub &amp; Projects (17)</b><span>@aryancodes-dev · Tap to explore all projects</span></span>
+        </button>
+        <p class="link-cap"><b>For:</b> exploring his 17 live apps, AI tools &amp; GitHub repositories.</p>
+      </div>
+      <div class="link-unit">
+        <a class="big-btn btn-linkedin" href="https://www.linkedin.com/in/aryan-kumar-shah-933222443" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
+          <span><b>LinkedIn</b><span>aryan-kumar-shah-933222443</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> connecting with him professionally.</p>
+      </div>
+      <div class="link-unit">
+        <a class="big-btn btn-ig2" href="https://www.instagram.com/aryancodes_dev" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+          <span><b>Instagram</b><span>@aryancodes_dev</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> following his coding reels and updates.</p>
+      </div>
+      <div class="link-unit">
+        <a class="big-btn btn-x" href="https://x.com/aryancodes_dev" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <span><b>X (Twitter)</b><span>@aryancodes_dev</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> following his posts and updates.</p>
+      </div>
+      <div class="link-unit">
+        <a class="big-btn btn-yt2" href="https://www.youtube.com/@LofiPLAYBOOK" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <span><b>Lofi PLAYBOOK</b><span>His music channel on YouTube</span></span>
+        </a>
+        <p class="link-cap"><b>For:</b> listening to his lofi songs.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GITHUB & PROJECTS PAGE (opens when tapping GitHub in About the creator) -->
+<div class="projects-page" id="projectsPage" role="dialog" aria-modal="true" aria-label="Aryan Kumar Shah — GitHub & Projects">
+  <div class="proj-topbar">
+    <button class="proj-back" id="projectsBack" type="button">← Back</button>
+    <span class="proj-top-title">GitHub &amp; Projects</span>
+    <button class="proj-close-all" id="projectsClose" type="button" aria-label="Close Projects">✕</button>
+  </div>
+
+  <div class="proj-in">
+    <!-- TOP GITHUB PROFILE BUTTON -->
+    <div class="proj-hero">
+      <p class="kicker" style="text-align:center">open source &amp; live builds</p>
+      <h2>Aryan’s Code &amp; Projects</h2>
+      <p class="sub" style="margin:6px auto 18px;text-align:center">Every project built by Aryan Kumar Shah — what it does, how it works, and direct buttons to launch or view source code.</p>
+      <a class="big-btn btn-github proj-top-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span>
+        <span><b>Open GitHub Profile — @aryancodes-dev</b><span>github.com/aryancodes-dev · View all repositories &amp; commits</span></span>
+        <span class="gh-arrow">↗</span>
+      </a>
+    </div>
+
+    <!-- SECTION 1: CORE DEVELOPER TOOLS & WEB APPS -->
+    <div class="proj-sec-head">
+      <span class="proj-sec-pill p-cyan">Developer Tools &amp; Web Apps</span>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">01</span><span class="proj-status st-live">PyPI + GitHub</span></div>
+        <h3>ContextHop</h3>
+        <p class="proj-desc">Python package that helps AI assistants remember and carry context seamlessly across different chats and sessions.</p>
+        <div class="proj-work"><b>How it works:</b> Captures structured conversation memory and injects relevant context automatically into new AI prompts via Python SDK/CLI.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-cyan" href="https://pypi.org/project/contexthop/" target="_blank" rel="noopener">📦 Open on PyPI ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub Code ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">02</span><span class="proj-status st-live">Live + GitHub</span></div>
+        <h3>DryRun</h3>
+        <p class="proj-desc">Predict-the-output trainer for C, Java, and Python — practice tricky coding questions with step-by-step answers.</p>
+        <div class="proj-work"><b>How it works:</b> Presents real exam &amp; interview code snippets, lets you trace variables mentally, and reveals detailed dry-run execution explanations.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-emerald" href="https://aryancodes-dev.github.io/DryRun/" target="_blank" rel="noopener">🚀 Open DryRun Live ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub Code ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">03</span><span class="proj-status st-gh">GitHub Only</span></div>
+        <h3>CampusDesk</h3>
+        <p class="proj-desc">Java desktop application built to manage college operations, student records, attendance, and campus notices in one place.</p>
+        <div class="proj-work"><b>How it works:</b> Uses a structured Java GUI &amp; database backend to organize student profiles, class schedules, and administrative announcements.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-indigo" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 Open CampusDesk on GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">04</span><span class="proj-status st-live">Live + GitHub</span></div>
+        <h3>NoticeBandhu</h3>
+        <p class="proj-desc">Smart web app that turns long, confusing college notices into clean, simple, easy-to-read updates for students.</p>
+        <div class="proj-work"><b>How it works:</b> Parses dense PDF/text circulars and highlights key dates, eligibility, and action items so students never miss deadlines.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-amber" href="https://aryancodes-dev.github.io/NoticeBandhu/" target="_blank" rel="noopener">🚀 Open NoticeBandhu Live ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub Code ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">05</span><span class="proj-status st-gh">GitHub Only</span></div>
+        <h3>MyWorkProof</h3>
+        <p class="proj-desc">Verification tool to document and prove your daily work, coding progress, and milestones with timestamped screenshots and records.</p>
+        <div class="proj-work"><b>How it works:</b> Logs verifiable proof-of-work snapshots and activity timelines for portfolios, internships, and client reporting.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-violet" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 Open MyWorkProof on GitHub ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SECTION 2: AI & ML MINI-APPS -->
+    <div class="proj-sec-head">
+      <span class="proj-sec-pill p-pink">AI &amp; Machine Learning Apps (#01 – #05)</span>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">#01</span><span class="proj-status st-live">Live</span></div>
+        <h3>Lumora</h3>
+        <p class="proj-desc">AI image and photo assistant web app with a sleek glassmorphism interface powered by Gemini AI.</p>
+        <div class="proj-work"><b>How it works:</b> Processes user prompts and visual inputs in real time to generate, analyze, and enhance creative ideas and images.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-pink" href="https://aryancodes-dev.github.io/Lumora/" target="_blank" rel="noopener">✨ Launch Lumora Live ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev/Lumora" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">#02</span><span class="proj-status st-live">Live</span></div>
+        <h3>Tic-Tac-Toe with AI</h3>
+        <p class="proj-desc">Unbeatable AI board game featuring classic 3×3 Tic-Tac-Toe plus an expanded 15×15 Gomoku strategy mode.</p>
+        <div class="proj-work"><b>How it works:</b> Uses Minimax / heuristic board evaluation algorithms to calculate optimal moves and challenge human players.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-cyan" href="https://aryancodes-dev.github.io/" target="_blank" rel="noopener">🎮 Play AI Game Live ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">#03</span><span class="proj-status st-live">Live</span></div>
+        <h3>Autocorrect</h3>
+        <p class="proj-desc">NLP text utility that automatically detects and fixes spelling mistakes and typos in real time.</p>
+        <div class="proj-work"><b>How it works:</b> Applies edit-distance algorithms and word-frequency probability models to suggest and replace misspelled words.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-emerald" href="https://aryancodes-dev.github.io/" target="_blank" rel="noopener">✍️ Open Autocorrect Live ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">#04</span><span class="proj-status st-live">Live</span></div>
+        <h3>Translator</h3>
+        <p class="proj-desc">Fast multi-language text translator web app for instant translation across global and Indian languages.</p>
+        <div class="proj-work"><b>How it works:</b> Connects to neural translation APIs with instant language detection, swap controls, and one-tap copy output.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-indigo" href="https://aryancodes-dev.github.io/" target="_blank" rel="noopener">🌍 Open Translator Live ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">#05</span><span class="proj-status st-warn">Built · Link Fixing</span></div>
+        <h3>Spam Email Classifier</h3>
+        <p class="proj-desc">Machine learning classifier that checks whether an email or message is Spam or Not Spam along with a confidence score.</p>
+        <div class="proj-work"><b>How it works:</b> Tokenizes email text using TF-IDF / Naive Bayes NLP classification to flag phishing and promotional spam instantly.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-amber" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">🛡️ View Repo &amp; Status on GitHub ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SECTION 3: MOBILE, AR, HARDWARE & AUTOMATION -->
+    <div class="proj-sec-head">
+      <span class="proj-sec-pill p-amber">Mobile Apps, AR, Hardware &amp; Creators</span>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">06</span><span class="proj-status st-live">Android / Play Store</span></div>
+        <h3>EditPop</h3>
+        <p class="proj-desc">Custom AI auto-captions video editor app for Android built for fast short-form Reels and YouTube Shorts creators.</p>
+        <div class="proj-work"><b>How it works:</b> Transcribes speech automatically, syncs animated word-by-word captions, and exports crisp vertical videos on mobile.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-pink" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">🎬 Explore EditPop ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">07</span><span class="proj-status st-live">Devpost Hackathon</span></div>
+        <h3>ReviseLens</h3>
+        <p class="proj-desc">Augmented Reality app built for the Learn AR with SPECS hackathon — places 5 interactive C flashcards on your desk with a 3D Memory Box.</p>
+        <div class="proj-work"><b>How it works:</b> Built with Lens Studio &amp; Spectacles Interaction Kit to visualize C pointers, arrays, and stack memory in 3D space.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-cyan" href="https://devpost.com/" target="_blank" rel="noopener">🥽 View on Devpost ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">08</span><span class="proj-status st-live">@gamerzgtaa</span></div>
+        <h3>Clip Watcher</h3>
+        <p class="proj-desc">Automated stream-clipping pipeline that watches live GTA 6 streams, detects high-action moments, and cuts 9:16 vertical clips for @gamerzgtaa.</p>
+        <div class="proj-work"><b>How it works:</b> Monitors audio/chat spikes and scene intensity to auto-crop, reframe, and export ready-to-post gaming Reels.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-violet" href="https://www.instagram.com/gamerzgtaa" target="_blank" rel="noopener">🎮 Visit @gamerzgtaa ↗</a>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">09</span><span class="proj-status st-live">Security Tool</span></div>
+        <h3>Phone Tracker</h3>
+        <p class="proj-desc">Anti-theft mobile security system that tracks your phone’s GPS location, rings it at max volume, locks it with a PIN, and captures a thief photo.</p>
+        <div class="proj-work"><b>How it works:</b> Uses remote commands and front-camera triggers on wrong PIN attempts to locate and secure a lost or stolen device.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-red" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">📍 Open Phone Tracker ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">10</span><span class="proj-status st-live">ESP32 IoT</span></div>
+        <h3>Smart Diwali Lights</h3>
+        <p class="proj-desc">ESP32 microcontroller IoT project that controls festive Diwali LED lights with custom animation patterns and music-beat sync.</p>
+        <div class="proj-work"><b>How it works:</b> Drives addressable RGB LEDs over Wi-Fi via an ESP32 web controller with reactive audio-frequency light effects.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-amber" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">🪔 Open ESP32 Project ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top-row"><span class="proj-num">11</span><span class="proj-status st-live">Built Today · Live</span></div>
+        <h3>Lofi PLAYBOOK Website</h3>
+        <p class="proj-desc">Official music website for the Lofi PLAYBOOK channel featuring slowed + reverb tracks, live audio player, rain effects, and premiere countdown.</p>
+        <div class="proj-work"><b>How it works:</b> Single-file interactive web experience with live YouTube stats sync, custom audio player, and rainy-midnight visuals.</div>
+        <div class="proj-actions">
+          <button class="p-btn pb-pink js-close-all-top" type="button">🎵 Explore Site Live ↑</button>
+          <a class="p-btn pb-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💻 GitHub ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SECTION 4: UPCOMING BIG PLATFORMS -->
+    <div class="proj-sec-head">
+      <span class="proj-sec-pill p-gold">🚀 Upcoming Flagship Platforms (3 Big Builds)</span>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj-card upcoming">
+        <div class="proj-top-row"><span class="proj-num">12</span><span class="proj-status st-soon">Upcoming · #1 of 3</span></div>
+        <h3>AI Campus OS</h3>
+        <p class="proj-desc">Comprehensive AI-powered operating system for Indian colleges — the first of Aryan’s 3 flagship platforms.</p>
+        <div class="proj-work"><b>Vision &amp; Use:</b> Unifies student academics, AI study notes, smart notices, attendance, and campus workflows into one unified college ecosystem.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-gold" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">🏛️ Follow Progress on GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card upcoming">
+        <div class="proj-top-row"><span class="proj-num">13</span><span class="proj-status st-soon">Upcoming · #2 of 3</span></div>
+        <h3>AI Coding Mentor Platform</h3>
+        <p class="proj-desc">Interactive AI coding mentor designed to guide students from beginner logic to real-world software engineering — second flagship platform.</p>
+        <div class="proj-work"><b>Vision &amp; Use:</b> Provides personalized code reviews, dry-run debugging hints, and structured project roadmaps instead of just dumping answers.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-cyan" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">🧠 Follow Progress on GitHub ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card upcoming">
+        <div class="proj-top-row"><span class="proj-num">14</span><span class="proj-status st-soon">Upcoming · #3 of 3</span></div>
+        <h3>AI WhatsApp Shop OS</h3>
+        <p class="proj-desc">Automated AI commerce &amp; order management operating system running directly inside WhatsApp for local shops — third flagship platform.</p>
+        <div class="proj-work"><b>Vision &amp; Use:</b> Lets local businesses manage product catalogs, AI customer replies, billing, and delivery tracking right over WhatsApp.</div>
+        <div class="proj-actions">
+          <a class="p-btn pb-emerald" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">💬 Follow Progress on GitHub ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="text-align:center;margin-top:34px">
+      <a class="big-btn btn-github proj-top-gh" href="https://github.com/aryancodes-dev" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span>
+        <span><b>View All Repositories on GitHub</b><span>github.com/aryancodes-dev</span></span>
+        <span class="gh-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- PLAYER -->
+<div class="player" role="region" aria-label="Music player — Tu Online Hai">
+  <div class="player-in">
+    <img class="p-art" src="assets/images/channel-avatar.webp" alt=""/>
+    <div class="p-mid">
+      <div class="p-title">Tu Online Hai, Par Mera Nahi 💔 — Lofi PLAYBOOK <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="live-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="p-bar">
+        <span id="tCur">0:00</span>
+        <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Seek through Tu Online Hai"/>
+        <span id="tDur">2:59</span>
+        <!-- duration label matches the published YouTube video (2:59) -->
+      </div>
+    </div>
+    <div class="p-controls">
+      <div class="p-vol"><span aria-hidden="true">🔊</span><input type="range" id="vol" min="0" max="1" step="0.05" value="0.9" aria-label="Volume"/></div>
+      <button class="p-play" id="playBtn" type="button" aria-label="Play or pause Tu Online Hai">▶</button>
+    </div>
+  </div>
+</div>
+
+<audio id="audio" src="assets/audio/tu-online-hai.mp3" preload="metadata"></audio>
+
+<script src="js/app.js" defer></script>
+<script src="js/effects.js" defer></script>
+</body>
+</html>

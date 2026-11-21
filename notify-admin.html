@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Send Push — Lofi PLAYBOOK</title>
+<style>body{font-family:system-ui,sans-serif;background:#0b0b1e;color:#fff;padding:20px;max-width:480px;margin:0 auto}input,textarea{width:100%;padding:12px;margin:6px 0;border-radius:12px;border:1px solid #555;background:#222;color:#fff;font:inherit}button{width:100%;padding:14px;border:0;border-radius:999px;background:linear-gradient(90deg,#ffb347,#ff5e8a);font-weight:900;font-size:16px;cursor:pointer}</style></head><body>
+<h1>Send push notification</h1><p>Use this after you upload a new video / short / post / affiliate deal. It sends a phone notification to everyone who tapped "Enable push" on the site.</p>
+<label>Backend URL (your Render URL)</label><input id="url" placeholder="https://lofi-playbook-push.onrender.com">
+<label>Admin secret (the one you set on Render)</label><input id="secret" type="password" placeholder="your secret">
+<label>Title</label><input id="title" value="Lofi PLAYBOOK — new upload!">
+<label>Message</label><textarea id="body">A new video is live. Tap to watch.</textarea>
+<label>Link to open</label><input id="link" value="https://aryancodes-dev.github.io/Lofi-PLAYBOOK/">
+<button onclick="send()">Send to everyone</button><p id="out"></p>
+<script>async function send(){var u=document.getElementById('url').value.trim();var r=await fetch(u+'/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({secret:document.getElementById('secret').value,title:document.getElementById('title').value,body:document.getElementById('body').value,url:document.getElementById('link').value})});var j=await r.json();document.getElementById('out').textContent=JSON.stringify(j);}</script>
+</body></html>

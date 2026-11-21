@@ -1,17 +1,23 @@
-// Lofi PLAYBOOK service worker — shows real push notifications on the phone
+// Lofi PLAYBOOK service worker — real push notifications
+self.addEventListener('install', function(){ self.skipWaiting(); });
+self.addEventListener('activate', function(e){ e.waitUntil(self.clients.claim()); });
 self.addEventListener('push', function(event){
   var data = {};
-  try{ data = event.data.json(); }catch(e){}
-  var title = data.title || 'Lofi PLAYBOOK — new upload!';
+  try{ data = event.data ? event.data.json() : {}; }catch(e){}
+  var base = self.registration.scope;
   var options = {
     body: data.body || 'A new video / short / post is live. Tap to watch.',
-    icon: 'https://aryancodes-dev.github.io/Lofi-PLAYBOOK/assets/logo.webp',
-    badge: 'https://aryancodes-dev.github.io/Lofi-PLAYBOOK/assets/logo.webp',
-    data: { url: data.url || 'https://aryancodes-dev.github.io/Lofi-PLAYBOOK/' }
+    icon: base + 'assets/logo.webp',
+    badge: base + 'assets/logo.webp',
+    data: { url: data.url || base }
   };
-  event.waitUntil(self.registration.showNotification(title, options));
+  event.waitUntil(self.registration.showNotification(data.title || 'Lofi PLAYBOOK — new upload!', options));
 });
 self.addEventListener('notificationclick', function(event){
   event.notification.close();
-  event.waitUntil(clients.openWindow(event.notification.data.url));
+  var url = (event.notification.data && event.notification.data.url) || self.registration.scope;
+  event.waitUntil(self.clients.matchAll({type:'window', includeUncontrolled:true}).then(function(list){
+    for (var i=0;i<list.length;i++){ if (list[i].url === url && 'focus' in list[i]) return list[i].focus(); }
+    return self.clients.openWindow(url);
+  }));
 });

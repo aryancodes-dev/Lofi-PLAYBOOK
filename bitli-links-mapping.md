@@ -3,16 +3,16 @@
 Checked 2026-11-21 with `curl -L --max-time 15` and a browser User-Agent (Android Chrome).
 Every link redirects to `trackingv3.linkredirect.in/visitretailer/<retailer-id>?id=5060487&shareid=<code>` — an EarnKaro tracking redirect. The tracking page returns an `og:title` naming the **store/offer**, not a specific product, for almost all links.
 
-**Result: 100 of 101 links identified to store/offer level; 1 unknown (blocked). 0 links identify a specific product (e.g. a named headphone model) — the og metadata only names the store or the credit-card/loan offer.**
+**Result: 101 of 101 links identified to store/offer level; 0 unknown. 0 links identify a specific product (e.g. a named headphone model) — the og metadata only names the store or the credit-card/loan offer.**
 
 Counts by type:
-- generic store homepage: 49
+- generic store homepage: 50 (was 49 — Brillare now identified, see below)
 - credit card: 43
-- unknown/blocked: 1
+- unknown/blocked: 0
 - loan/EMI: 7
 - savings account: 1
-- identified (store/offer): 100
-- unknown: 1
+- identified (store/offer): 101
+- unknown: 0
 
 | Link | Store | Product | Evidence |
 |---|---|---|---|
@@ -23,7 +23,7 @@ Counts by type:
 | https://bitli.in/hbasgjC | Dot & Key Store | unknown - generic store homepage, no specific product shown | og:title 'Dot & Key Store'; og:description 'Dot & Key, an award-winning skincare company, is here to redefine skincare as a fun, easy, and accessible concept!Shop N'; final URL https://trackingv3.linkredirect.in/visitretailer/2529?id=5060487&shareid=hbasgjC |
 | https://bitli.in/tBeEoSM | SBI Cashback Credit Card | SBI Cashback Credit Card | og:title 'SBI Cashback Credit Card'; og:description 'Earn Upto Rs 5000 Monthly Cashback with the Cashback SBI Credit Card!Apply Now!'; final URL https://trackingv3.linkredirect.in/visitretailer/2616?id=5060487&shareid=tBeEoSM |
 | https://bitli.in/T4WQ8AS | mCaffeine Store | unknown - generic store homepage, no specific product shown | og:title 'mCaffeine Store'; og:description 'Elevate your skincare routine with mCaffeine! Dive into a world of caffeine-infused beauty and savings!Shop Now!'; final URL https://trackingv3.linkredirect.in/visitretailer/2034?id=5060487&shareid=T4WQ8AS |
-| https://bitli.in/Dvz4t1Ox | unknown | unknown - blocked / generic store link | HTTP 403; curl and browser.open both 403; no og:title; final URL https://bitli.in/Dvz4t1Ox |
+| https://bitli.in/Dvz4t1Ox | Brillare (via CashKaro) | Brillare Rosemary Oil Shots / hair care — generic store homepage | IDENTIFIED 2026-11-21 by user's screenshot: final URL brillare.co.in/?utm_source=CashKaro, "Rosemary Oil Shots — Visible Hair Growth in 4 Weeks". curl from server still returns 403 (bot-blocked), but the real-browser destination is confirmed by the user. |
 | https://bitli.in/zxW0KS9 | Goibibo | unknown - generic store homepage, no specific product shown | og:title 'Goibibo'; og:description 'Goibibo, a top online travel platform, offers diverse hotel booking options for every budget and preferenceBook Now!'; final URL https://trackingv3.linkredirect.in/visitretailer/1014?id=5060487&shareid=zxW0KS9 |
 | https://bitli.in/cnRxr5c | Kerala Ayurveda | unknown - generic store homepage, no specific product shown | og:title 'Kerala Ayurveda'; og:description 'Shop trusted Ayurvedic solutions across categories like skincare, haircare, and digestive health since 1945!Shop Now!'; final URL https://trackingv3.linkredirect.in/visitretailer/1130?id=5060487&shareid=cnRxr5c |
 | https://bitli.in/ZyR0bXh | Dell | unknown - generic store homepage, no specific product shown | og:title 'Dell'; og:description 'Explore Dell's latest computers & technology solutionsShop Now!'; final URL https://trackingv3.linkredirect.in/visitretailer/1151?id=5060487&shareid=ZyR0bXh |
@@ -119,6 +119,6 @@ Counts by type:
 | https://bitli.in/w89C3ms | PharmEasy Diagnostics | unknown - generic store homepage, no specific product shown | og:title 'PharmEasy Diagnostics'; og:description 'Choose from a wide range of health checkups and diagnostic tests at discounted prices, with sample collection at your do'; final URL https://trackingv3.linkredirect.in/visitretailer/2799?id=5060487&shareid=w89C3ms |
 
 ## Notes / limits
-- `Dvz4t1Ox`: curl returned HTTP 403 with no body/metadata, and browser.open also failed with HTTP 403 access denied. It cannot be identified from this machine; only the user tapping it in a real browser can see where it goes.
+- `Dvz4t1Ox`: IDENTIFIED 2026-11-21 15:04 IST from the user's own screenshot — Brillare, brillare.co.in/?utm_source=CashKaro (Rosemary Oil Shots, hair growth). Note: this one is a **CashKaro** link, not EarnKaro — its tracking is CashKaro, so earnings for Brillare will show in CashKaro, not in EarnKaro. curl from this machine still returns 403 (bot-blocked); the real-browser destination is confirmed by the user.
 - Duplicates in the user list are listed twice, as sent: `yt4BBC5` x2, `Cjw9r91` x2, `FqKS1Vz` x2, `9N2Vmjc` x2, plus `Mivi` via both `c6JE45U` and `UdpKGoX` (same retailer 2753).
 - No link in this list points directly at Amazon or Flipkart, and none names a specific product model (no headphone/speaker/T-shirt model in any og:title, description or final URL). They are store-homepage or card/loan-offer links, so they cannot be matched to individual Music Shop products without the user naming the product for each link.

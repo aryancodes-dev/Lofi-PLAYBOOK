@@ -65,7 +65,7 @@ function flip(mode){
   else{card.classList.remove('flipped');}
 }
 function save(name,email,mode){
-  try{localStorage.setItem('lofi_user',JSON.stringify({name:name,email:email,mode:mode,ts:Date.now()}));localStorage.removeItem('lofi_updates_seen');}catch(e){}
+  try{localStorage.setItem('lofi_user',JSON.stringify({name:name,email:email,mode:mode,ts:Date.now()}));localStorage.removeItem('lofi_updates_seen_ids');}catch(e){}
   location.replace('index.html');
 }
 function guest(){
@@ -75,7 +75,7 @@ function guest(){
 document.getElementById('formIn').addEventListener('submit',function(e){e.preventDefault();
   var em=document.getElementById('emailIn').value.trim(), pw=document.getElementById('passIn').value;
   if(!em||pw.length<6){document.getElementById('errIn').textContent='Enter a valid email and a password of 6+ characters.';return;}
-  save('',em,'in');
+  save(em.split('@')[0],em,'in');
 });
 document.getElementById('formUp').addEventListener('submit',function(e){e.preventDefault();
   var nm=document.getElementById('nameUp').value.trim(), em=document.getElementById('emailUp').value.trim(), pw=document.getElementById('passUp').value;

@@ -1,0 +1,7 @@
+v19 changes (animations untouched - every @keyframes / animation rule is identical to v18)
+- Ask AI: language picker REMOVED. Language is auto-detected from what you type (EN, HI, Hinglish, BN, ES, FR, DE, PT, AR, JA) and the reply comes in that language.
+  Smarter intents: songs (live list), premiere (live countdown), shop, contact, creator, notifications, thanks, help. Close button added (chat could not be closed before). Stale "51 picks / Flipkart" text removed.
+- Notifications: safe rendering, "#shop" links no longer open a blank tab, unread dot tracked per update id, bell now shows for email sign-in (it never did), panel sits under the header on mobile.
+- Push server: CORS added (without it the browser blocked /subscribe), /vapid-public-key, /updates feed, AUTO YouTube upload detection (RSS) + auto push, rate limit, timing-safe secret, batch sending, atomic saves.
+- Leaked VAPID private key removed from README - generate a new pair (see README-PUSH.txt).
+- Load/glitch: removed content-visibility from <section> (caused scroll jumps), seek bar no longer fights your finger, all play buttons stay in sync, countdown pauses in hidden tabs and no longer says LIVE forever.
